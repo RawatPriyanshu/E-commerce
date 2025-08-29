@@ -1,0 +1,313 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* header */
+.header{
+     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    background-color: #fff;
+    z-index: 1000; 
+}
+.searchBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-bottom: 2px solid #fdd3b0;
+    padding-bottom: 5px;
+}
+.search{
+    position: relative;
+    margin-left: 15px;
+}
+.search input{
+    background-color: #ebe9e9;
+    max-width: 400px;
+    min-width: 250px;
+    padding: 10px 10px 10px 50px;
+    border: none;
+    border-radius: 8px;
+}
+input::placeholder{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.5px;
+    color: #7a7979;
+}
+.mob-logo{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 8px;
+    left: 5px;
+}
+.mob-logo img{
+    width: 100%;
+}
+.icons{
+    margin-right: 15px;
+    display: flex;
+}
+.icon{
+    font-size: 25px;
+    color: #000
+}
+.cart {
+    position: relative;
+}
+.profile{
+    margin-right: 20px;
+}
+.navigations{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+.navigations::-webkit-scrollbar {
+    display: none;
+}
+.navigations a{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.nav-icons{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px 5px 5px 10px;
+}
+.navigations ul{
+    list-style: none;
+    display: flex;
+}
+
+/* main content */
+/* 1. banner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ddd;
+  border-top: 4px solid orange;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.main-content{
+    overflow: hidden;
+    padding-top: 100px;
+}
+.banner{
+    margin-top: 5px;
+}
+.banner .carousel-container {
+  width: 100%;
+  max-width: 1024px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.banner .carousel .slide img {
+  width: 100%;
+  height: 18vh;
+  object-fit: cover;
+}
+
+/* products */
+/* men's-section  */
+h1{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+.collection-heading{
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+}
+.bestOfMen{
+    background-color: #f8b842;
+    margin: 10px 15px;
+}
+.bestOfMenList{
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: flex;
+    gap: 10px;
+}
+.product-link {
+    text-decoration: none;
+}
+.product-image{
+    width: 115px;
+    height: 135px;
+    border: 1px solid orange;
+    padding: 10px;
+    border-radius: 10px;
+}
+.product-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.product-card{
+    margin-left: 5px;
+    text-decoration: none;
+}
+.product-card h3{
+    font-size: 1rem;
+    color: #000;
+}
+.product-card p {
+    margin-bottom: 5px;
+    color: #000;
+}
+
+/* women's-section  */
+.bestOfWomen{
+    background-color: #ffdd0073;
+    margin: 10px 15px;
+}
+.bestOfWomenList{
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: flex;
+    gap: 10px;
+}
+.bestOfWomen .product-image{
+    border: 1px solid yellow;
+}
+
+/* kids section */
+.bestOfKids{
+    background: linear-gradient(to right, #E81515, #F06E6E, #EDA553);
+    margin: 10px 15px;
+}
+.bestOfKidsList{
+    overflow-x: auto;
+    scrollbar-width: none;
+    display: flex;
+    gap: 10px;
+}
+.bestOfKids .product-image{
+    border: 1px solid #ffff0063;
+}
+
+/* home - section */
+.bestOfHome{
+    background-color: #fff;
+    margin: 10px 15px;
+}
+.bestOfHome .product-image{
+    border: 1px solid #cfcdcd;
+}
+.bestOfHomeList{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.bestOfHome .product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* footer-section */
+.footer {
+  background-color: #fdd3b0;
+  padding: 40px 20px 10px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer-logo{
+    width: 120px;
+}
+.footer-logo img {
+    width: 100%;
+}
+.links-container {
+  display: flex;
+  justify-content: space-between;
+}
+.links-section ul{
+  text-align: start;
+  width: 100%;
+  margin-left: 5px;
+}
+.footer-section h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+  color: #ff6600;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 10px;
+  color: #333;
+}
+
+.social-icons a:hover {
+  color: #ff6600;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 15px;
+  font-size: 13px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
+}

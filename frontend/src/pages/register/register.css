@@ -1,0 +1,80 @@
+.background{
+  background: linear-gradient(-45deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.registraition{
+  margin: 0 20px;
+  background: linear-gradient(to right, #f0f2f5, #dfe9f3);
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 300px;
+}
+.registraition h1{
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin: 10px;
+}
+.registraition form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.required{
+    color: red;
+}
+.registraition label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  position: absolute;
+  left: 25px;
+  background: linear-gradient(to bottom, #f0f2f5, #fff);
+}
+.form-input{
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px;
+}
+.form-group{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.btn{
+  width: 250px;
+  padding: 10px;
+  background-color: #f59342;
+  color: #434343;
+  font-weight: 500;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+.login-link{
+  display: inline-block;
+  margin: 10px;
+}
+
+/* for 1024px size */
+@media (min-width: 1024px){
+  .background{
+    background: white !important;
+  }
+  .registraition{
+    display: none;
+  }
+}
