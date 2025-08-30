@@ -3,7 +3,8 @@
     "builder": "NIXPACKS"
   },
   "nixpacks": {
-    "buildCommand": "cd backend && npm install",
-    "startCommand": "cd backend && npm start"
+    "buildDir": "backend",
+    "buildCommand": "npm install",
+    "startCommand": "npm start"
   }
 }
