@@ -10,24 +10,29 @@ const app = express();
 app.use(express.json());
 
 // CORS setup
-const allowedOrigins = [
-  "http://localhost:3000",                  // development
-  "https://e-commerce-lac-three.vercel.app" // production
-];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman or curl)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: ["http://localhost:3000", "https://e-commerce-lac-three.vercel.app"],
   credentials: true,
 };
-
 app.use(cors(corsOptions));
+// const allowedOrigins = [
+//   "http://localhost:3000",                  // development
+//   "https://e-commerce-lac-three.vercel.app" // production
+// ];
+
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     // allow requests with no origin (like Postman or curl)
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true,
+// };
+
+// app.use(cors(corsOptions));
 
 
 // Routes
