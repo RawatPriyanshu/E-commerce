@@ -8,11 +8,10 @@ import { useSelector } from 'react-redux';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const API = "https://e-commerce-by-priyanshu.onrender.com";
   useEffect(()=>{
     const fetchProducts = async ()=>{
       try{
-        const res = await axios.get(`${API}/api/products`);
+        const res = await axios.get("https://e-commerce-by-priyanshu.onrender.com/api/products");
         setProducts(res.data);
       } catch(error){
         console.error("Error fetching products",error);
