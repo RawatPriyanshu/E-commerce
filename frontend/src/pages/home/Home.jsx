@@ -11,8 +11,7 @@ const Home = () => {
   useEffect(()=>{
     const fetchProducts = async ()=>{
       try{
-        const res = await axios.get("https://e-commerce-by-priyanshu.onrender.com/api/products");
-        console.log("Fetched Products:", res.data); 
+        const res = await axios.get(`${API}/api/products`);
         setProducts(res.data);
       } catch(error){
         console.error("Error fetching products",error);
