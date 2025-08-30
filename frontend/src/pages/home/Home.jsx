@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const API = "https://e-commerce-by-priyanshu.onrender.com";
   useEffect(()=>{
     const fetchProducts = async ()=>{
       try{

@@ -10,9 +10,10 @@ const Product = () => {
   const [product, setProduct] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
   const [liked, setLiked] = useState(false);
+  const API = "https://e-commerce-by-priyanshu.onrender.com";
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`${API}/api/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data))
       .catch(err => console.error(err));
