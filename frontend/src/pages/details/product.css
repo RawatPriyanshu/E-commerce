@@ -84,7 +84,7 @@
 }
 .buy-now{
     background-color: yellow;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 .buy-now button{
     background-color: rgba(255, 255, 255, 0);
@@ -94,7 +94,7 @@
 }
 .add-to-cart{
     background-color: orange;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 .add-to-cart button{
     background-color: rgba(255, 255, 255, 0);
@@ -181,6 +181,6 @@
     color: rgb(122, 122, 141);
     font-weight: 500;
     background-color: #80808030;
-    margin-bottom: 50px;
+    margin-bottom: 65px;
     padding: 10px 0;
 }

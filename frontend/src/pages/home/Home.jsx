@@ -32,6 +32,7 @@ const Home = () => {
         <div className="icons">
         <div className="profile">
           <i className="fa fa-user icon"></i>
+          <div className="profile-menu"></div>
         </div>
         <div className="cart">
           <Link to={'/cart'}><i className="fa fa-shopping-cart icon"></i></Link>

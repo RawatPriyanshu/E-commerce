@@ -60,6 +60,20 @@ input::placeholder{
 }
 .profile{
     margin-right: 20px;
+    position: relative;
+}
+.profile-menu{
+    position: absolute;
+    width: 150px;
+    height: 100px;
+    background-color: orange;
+    right: -60px;
+    bottom: -5px;
+    display: none;
+    z-index: 1001;
+}
+.profile:hover .profile-menu{
+    display: block;
 }
 .navigations{
     display: flex;
