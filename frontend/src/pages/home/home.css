@@ -99,6 +99,7 @@ input::placeholder{
 .navigations ul{
     list-style: none;
     display: flex;
+    align-items: center;
 }
 
 /* main content */

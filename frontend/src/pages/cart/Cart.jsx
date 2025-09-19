@@ -9,6 +9,10 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+   const totalAmount = cartItems.reduce(
+    (acc, item) => acc + item.price,
+    0
+  );
   return (
     <div className='cart-container'>
       <div className="myCart">
@@ -35,9 +39,18 @@ const Cart = () => {
             </div>
             </div>
             <div className="container3">
+              <div>
             <h4>{item.name}</h4>
+            <p className='rating-stars'>&#9733;&#9733;&#9733;&#9733;<span style={{color: "#bab2b2"}}>&#9733; </span><span style={{fontSize:"small"}}>4 star rating</span></p>
             <p className='pricing'><span style={{color:'green'}}>&#11015;<b>15%</b></span><span className='actual-value'><s>₹{Math.round(item.price / (1 - 15/100))}</s></span>₹{item.price}</p>
-            <button onClick={() => dispatch(removeFromCart(item._id))}>Remove</button>
+            </div >
+            <div className='remove-buy'><button className='remove-btn' onClick={() => dispatch(removeFromCart(item._id))}><i className="fa-solid fa-trash-can"></i> Remove</button>
+            <button className='buy-btn'><i class="fas fa-bolt"></i> Buy this now</button>
+            </div>
+            </div>
+            <div className="place-order">
+              <span>Total Amount: ₹{totalAmount}</span>
+              <button>Place Order</button>
             </div>
           </div>
         ))}

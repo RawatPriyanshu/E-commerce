@@ -4,8 +4,12 @@ import { Carousel } from "react-responsive-carousel";
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import SearchBar from '../SearchBar';
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState("");
   const [products, setProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const API = "https://e-commerce-by-priyanshu.onrender.com";
@@ -20,13 +24,19 @@ const Home = () => {
     };
     fetchProducts();
   },[]);
+   const handleSearch = (e) => {
+    e.preventDefault()
+      if (keyword.trim()) {
+        navigate(`/searched/${keyword}`);
+    }
+  };
   return (
     <div style={{backgroundColor:'#f1f2f4'}}>
       {/* small device size */}
       <header className="header">
         <div className="searchBox">
         <div className="search">
-          <input type="text" placeholder='Search products here...' />
+          <SearchBar />
           <div className="mob-logo"><img src="/images/logo.png" alt="logo-mob" /></div>
         </div>
         <div className="icons">
@@ -54,6 +64,7 @@ const Home = () => {
         </div>
         <nav className='navigations'>
           <ul>
+            <li><a href="#"><i style={{color:"black", fontSize:"20px"}} className="fa-solid fa-house"></i></a></li>
             <li><a href="#"><img className='nav-icons' src="/images/men.jpg" alt="" /><span>Men</span></a></li>
             <li><a href="#"><img className='nav-icons' src="/images/women.jpg" alt="" /><span>Women</span></a></li>
             <li><a href="#"><img className='nav-icons' src="/images/kids.jpg" alt="" /><span>Kids</span></a></li>
