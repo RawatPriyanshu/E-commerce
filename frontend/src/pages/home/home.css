@@ -62,18 +62,26 @@ input::placeholder{
     margin-right: 20px;
     position: relative;
 }
+.profile-menu-hide{
+    display: none;
+}
 .profile-menu{
     position: absolute;
     width: 150px;
-    height: 100px;
-    background-color: orange;
-    right: -60px;
-    bottom: -5px;
-    display: none;
+    background-color: #fff;
+    right: -65px;
+    top: 30px;
     z-index: 1001;
+    border: 2px solid orange;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
 }
-.profile:hover .profile-menu{
-    display: block;
+.profile-menu i{
+    margin-right: 5px;
+}
+.profile-menu div{
+    padding: 5px;
 }
 .navigations{
     display: flex;

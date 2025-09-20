@@ -8,6 +8,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Product from './pages/details/Product';
 import Cart from './pages/cart/Cart';
 import SearchedProducts from './pages/searched/SearchedProducts';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
   return (
@@ -16,9 +17,9 @@ function App() {
         <Route path='/' element={<First />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/home' element={<Home />} />
-        <Route path="/product/:id" element={<Product />} />
-        <Route path='/cart' element={<Cart />} />
+        <Route path='/home' element={<ProtectedRoute><Home /></ProtectedRoute>} />
+        <Route path="/product/:id" element={<ProtectedRoute><Product /></ProtectedRoute>} />
+        <Route path='/cart' element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         <Route path='/searched/:keyword' element={<SearchedProducts />} />
       </Routes>
     </div>

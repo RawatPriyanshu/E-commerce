@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./home.css";
 import { Carousel } from "react-responsive-carousel";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../SearchBar";
 
 const Home = () => {
+  const [userDetails, setUserDetails] = useState(false);
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
   const API = "https://e-commerce-by-priyanshu.onrender.com";
@@ -21,6 +23,12 @@ const Home = () => {
     };
     fetchProducts();
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  }
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
       {/* small device size */}
@@ -33,9 +41,12 @@ const Home = () => {
             </div>
           </div>
           <div className="icons">
-            <div className="profile">
+            <div className="profile" onClick={() => setUserDetails(!userDetails)}>
               <i className="fa fa-user icon"></i>
-              <div className="profile-menu"></div>
+              <div className={userDetails ? "profile-menu" : "profile-menu-hide"}>
+                <div><span><i class="fa-regular fa-user"></i> Edit Profile</span></div>
+                <div onClick={handleLogout}><span><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</span></div>
+              </div>
             </div>
             <div className="cart">
               <Link to={"/cart"}>
