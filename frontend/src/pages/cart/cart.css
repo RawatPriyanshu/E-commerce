@@ -36,7 +36,7 @@
 .cart-wrap .container{
     display: flex;
     gap: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 .cart-wrap .product-image {
     width: 90px;
@@ -103,7 +103,7 @@
     left: 0 ;
     width: 100%;
     background-color: #ffa60040;
-    padding: 10px 0;
+    padding: 8px 0;
     text-align: center;
     box-shadow: 0 -2px 5px rgba(243, 111, 17, 0.454);
     display: flex;

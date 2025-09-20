@@ -10,7 +10,7 @@ const SearchBar = () => {
     e.preventDefault();
     if (keyword.trim()) {
       navigate(`/searched/${keyword}`);
-      setKeyword(""); // optional: clear input after search
+      setKeyword("");
     }
   };
 
