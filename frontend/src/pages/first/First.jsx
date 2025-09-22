@@ -58,7 +58,7 @@ const First = () => {
       <div className="slider-section"></div>
       <div className="register-section"></div>
     </div> */}
-    <div className={`container ${isActive ? 'active' : ''}`} id="container">
+    <div className={`first-container ${isActive ? 'active' : ''}`} id="container">
       {/* Register Form */}
       <div className="form-container sign-up">
         <form onSubmit={handleSubmit}>

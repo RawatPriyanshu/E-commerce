@@ -18,7 +18,7 @@ const Cart = () => {
       <div className="myCart">
         <h2>My Cart</h2>
         {cartItems.length > 0 && (
-          <i  onClick={() => dispatch(clearCart())} class="fa-solid fa-trash-can"></i>
+          <i  onClick={() => dispatch(clearCart())} className="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i>
         )}
       </div>
       

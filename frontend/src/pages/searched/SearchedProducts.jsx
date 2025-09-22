@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import "./searched.css";
 import { useSelector } from "react-redux";
 import SearchBar from "../SearchBar";
@@ -11,6 +11,8 @@ const SearchedProducts = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const searchTerm = keyword?.toLowerCase() || "";
   const [sortOrder, setSortOrder] = useState("");
+  const [userDetails, setUserDetails] = useState(false);
+  const navigate = useNavigate();
 
   const API = "https://e-commerce-by-priyanshu.onrender.com";
 
@@ -31,11 +33,10 @@ const SearchedProducts = () => {
   }, []);
 
   const filtered = products.filter(
-  (p) =>
-    p.name.toLowerCase().includes(searchTerm) ||
-    p.category.toLowerCase() === searchTerm
-);
-
+    (p) =>
+      p.name.toLowerCase().includes(searchTerm) ||
+      p.category.toLowerCase() === searchTerm
+  );
 
   if (loading) return <p>Loading...</p>;
 
@@ -47,20 +48,39 @@ const SearchedProducts = () => {
     }
     return 0; // default (no sorting)
   });
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/");
+  }
   return (
     <div className="searchedProducts">
       <header className="header">
         <div className="searchBox">
           <div className="search">
-            <SearchBar />
             <div className="mob-logo">
               <img src="/images/logo.png" alt="logo-mob" />
             </div>
+            <SearchBar />
           </div>
           <div className="icons">
-            <div className="profile">
+            <div className="profile" onClick={() => setUserDetails(!userDetails)}>
               <i className="fa fa-user icon"></i>
-              <div className="profile-menu"></div>
+              <div
+                className={userDetails ? "profile-menu" : "profile-menu-hide"}
+              >
+                <div>
+                  <span>
+                    <i class="fa-regular fa-user"></i> Edit Profile
+                  </span>
+                </div>
+                <div onClick={handleLogout}>
+                  <span>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                  </span>
+                </div>
+              </div>
             </div>
             <div className="cart">
               <Link to={"/cart"}>
@@ -128,7 +148,8 @@ const SearchedProducts = () => {
       <div className="searched-container">
         <h2>Results for "{searchTerm}"</h2>
         <div className="sort-section">
-          <span>Sort by:</span> {/*  {sortOrder === "" ? 'Default' : sortOrder} */}
+          <span>Sort by:</span>{" "}
+          {/*  {sortOrder === "" ? 'Default' : sortOrder} */}
           <select onChange={(e) => setSortOrder(e.target.value)}>
             <option value="">Default</option>
             <option value="lowToHigh">Price: Low to High</option>

@@ -44,6 +44,7 @@ const formattedDate = futureDate.toLocaleDateString('en-GB', options);
   return (
     <div className='product-details'>
       <div className="product-image"><img src={product.image} alt={product.name} /><div className="like-share"><i className={liked ? "fas fa-heart red-heart" : "far fa-heart heart-icon"} onClick={()=>setLiked(!liked)}></i><i className="fas fa-share share-icon"></i></div></div> 
+      <div>
       <div className="details">
       <h1>{product.name}</h1>
       <p className='rating'><span className="star">4.5 <i class="fas fa-star" style={{margin:"0 0 0 5px"}}></i></span>10,000+ Ratings</p>
@@ -88,6 +89,7 @@ const formattedDate = futureDate.toLocaleDateString('en-GB', options);
       </div>
          <h5>Assured Quality | 100% Handpicked | Easy Exchange</h5>
     </section>
+    </div>
     </div>
   );
 };

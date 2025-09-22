@@ -4,6 +4,7 @@
     align-items: center;
     padding: 10px 15px;
     background-color: #fff;
+    width: 100%;
 }
 .myCart h2{
     font-family: 'poppins', sans-serif;
@@ -17,6 +18,13 @@
 .cart-container{
     background-color: #80808047;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.empty-cart-box div {
+    max-width: 400px;
+    margin: 0 auto;
 }
 .empty-cart-box img{
     width: 100%;
@@ -27,11 +35,14 @@
     color: #000;
     font-weight: 500;
     border-radius: 10px;
+    cursor: pointer;
 }
 .cart-wrap{
     margin-top: 20px;
     background-color: #fff;
     padding: 10px;
+    max-width: 450px;
+    width: 100%;
 }
 .cart-wrap .container{
     display: flex;
@@ -61,6 +72,7 @@
     height: 20px;
     background-color: orange;
     border: none;
+    cursor: pointer;
 }
 .container2 .quantity p {
     width: 20px;
@@ -86,6 +98,7 @@
     border-right: 1px solid #8080805e;
     font-weight: 700;
     color: gray;
+    cursor: pointer;
 }
 .buy-btn{
     color: gray;
@@ -93,6 +106,7 @@
     background-color: #ffffff00;
     padding: 10px 15px;
     font-weight: 700;
+    cursor: pointer;
 }
 .remove-buy{
     border: 1px solid #8080805e;
@@ -103,11 +117,11 @@
     left: 0 ;
     width: 100%;
     background-color: #ffa60040;
-    padding: 8px 0;
+    padding: 8px 15px;
     text-align: center;
     box-shadow: 0 -2px 5px rgba(243, 111, 17, 0.454);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 .place-order span{

@@ -27,7 +27,7 @@ const Home = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    navigate("/login");
+    navigate("/");
   }
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
@@ -35,10 +35,10 @@ const Home = () => {
       <header className="header">
         <div className="searchBox">
           <div className="search">
-            <SearchBar />
             <div className="mob-logo">
               <img src="/images/logo.png" alt="logo-mob" />
             </div>
+            <SearchBar />
           </div>
           <div className="icons">
             <div className="profile" onClick={() => setUserDetails(!userDetails)}>
@@ -154,7 +154,7 @@ const Home = () => {
             ) : (
               products
                 .filter((product) => product.category.toLowerCase() === "men")
-                .slice(0, 6)
+                .slice(0, 8)
                 .map((product) => (
                   <Link to={`/product/${product._id}`} className="product-link">
                     <div key={product._id} className="product-card">
@@ -181,7 +181,7 @@ const Home = () => {
             ) : (
               products
                 .filter((product) => product.category.toLowerCase() === "women")
-                .slice(0, 6)
+                .slice(0, 8)
                 .map((product) => (
                   <Link to={`/product/${product._id}`} className="product-link">
                     <div key={product._id} className="product-card">
@@ -208,7 +208,7 @@ const Home = () => {
             ) : (
               products
                 .filter((product) => product.category.toLowerCase() === "kids")
-                .slice(0, 6)
+                .slice(0, 8)
                 .map((product) => (
                   <Link to={`/product/${product._id}`} className="product-link">
                     <div key={product._id} className="product-card">
@@ -216,8 +216,8 @@ const Home = () => {
                         <img src={product.image} alt={product.name} />
                       </div>
                       <h3 className="product-title">
-                        {product.name.length > 18
-                          ? product.name.slice(0, 18) + "..."
+                        {product.name.length > 20
+                          ? product.name.slice(0, 20) + "..."
                           : product.name}
                       </h3>
                       <p className="product-description">₹{product.price}</p>
@@ -235,7 +235,7 @@ const Home = () => {
             ) : (
               products
                 .filter((product) => product.category.toLowerCase() === "home")
-                .slice(0, 4)
+                .slice(0, 6)
                 .map((product) => (
                   <Link to={`/product/${product._id}`} className="product-link">
                     <div key={product._id} className="product-card">

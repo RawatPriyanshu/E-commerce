@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
   const API = "https://e-commerce-by-priyanshu.onrender.com";
   const [form, setForm] = useState({
     username: "",
@@ -21,6 +22,7 @@ const Register = () => {
     try {
       await axios.post(`${API}/api/users/register`, form);
       alert("registered success");
+      navigate("/login");
     } catch (error) {
       alert("something went wrong");
     }
