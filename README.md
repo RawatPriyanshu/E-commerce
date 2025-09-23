@@ -7,7 +7,7 @@ It allows users to browse products, search, filter by category, view detailed pr
 
 ## 🚀 Live Demo
 
-**[View Live Website](https://fc2b3b0d-576c-496c-8f25-55101cd00dea.lovableproject.com)**
+**[View Live Website](https://e-commerce-rho-six-90.vercel.app/)**
 
 ---
 
@@ -31,10 +31,10 @@ It allows users to browse products, search, filter by category, view detailed pr
 ![Login Page](./frontend/public/images/login-signup.png)
 
 ### 🏠 Homepage
-![Home Page](./screenshots/home.png)
+![Home Page](./frontend/public/images/home-ui.png)
 
 ### 🔍 Search Results
-![Search Products](./screenshots/search.png)
+![Search Products](./frontend/public/images/searched.png)
 
 ---
 
