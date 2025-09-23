@@ -384,4 +384,88 @@ h1 {
   .search input{
     width: 500px;
   }
+
+  /* checking */
+  .bestOfMen , .bestOfWomen, .bestOfKids, .bestOfHome {
+    padding: 20px 0;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    max-width: 100%;
+    margin: 30px 10px;
+  }
+
+  .bestOfMen .collection-heading , .bestOfWomen .collection-heading, .bestOfKids .collection-heading, .bestOfHome .collection-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 15px 20px;
+    color: #222;
+    text-align: left;
+    border-left: 4px solid #ff6a00;
+    padding-left: 10px;
+  }
+
+  .bestOfMenList, .bestOfWomenList, .bestOfKidsList {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 0 20px 10px 20px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  .bestOfMenList::-webkit-scrollbar, .bestOfWomenList::-webkit-scrollbar, .bestOfKidsList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-card {
+    flex: 0 0 200px;
+    background: #fafafa;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  }
+
+  .bestOfMen .product-image, .bestOfWomen .product-image, .bestOfKids .product-image, .bestOfHome .product-image {
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border: none;
+  }
+
+  .product-image img, .bestOfHome .product-image img , .bestOfWomen .product-image img , .bestOfKids .product-image img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+  }
+
+  .product-card:hover .product-image img, .bestOfHome .product-image img:hover , .bestOfWomen .product-image img:hover , .bestOfKids .product-image img:hover {
+    transform: scale(1.05);
+  }
+
+  .product-title{
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .product-description {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ff6a00;
+  }
+  .bestOfHome .product-card{
+    height: 270px;
+  }
 }
