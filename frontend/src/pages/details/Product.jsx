@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import './product.css'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/cartSlice';
+import { toast } from 'react-toastify';
+import CartToast from '../CartToast';
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ const Product = () => {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+    toast.success(<CartToast />)
   };
 
    const isShoe = product.name.toLowerCase().includes("shoes") || 

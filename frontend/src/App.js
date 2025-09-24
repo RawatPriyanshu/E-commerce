@@ -9,6 +9,10 @@ import Product from './pages/details/Product';
 import Cart from './pages/cart/Cart';
 import SearchedProducts from './pages/searched/SearchedProducts';
 import ProtectedRoute from './pages/ProtectedRoute';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Edit from './pages/editProfile/Edit';
+
 
 function App() {
   return (
@@ -21,7 +25,9 @@ function App() {
         <Route path="/product/:id" element={<ProtectedRoute><Product /></ProtectedRoute>} />
         <Route path='/cart' element={<ProtectedRoute><Cart /></ProtectedRoute>} />
         <Route path='/searched/:keyword' element={<SearchedProducts />} />
+        <Route path='/editProfile' element={<ProtectedRoute><Edit /></ProtectedRoute>} />
       </Routes>
+      <ToastContainer  position="top-right" autoClose={3000} theme='colored'/>
     </div>
   );
 }

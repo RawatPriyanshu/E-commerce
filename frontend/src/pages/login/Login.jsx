@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./login.css";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -24,12 +25,12 @@ const Login = () => {
         `${API}/api/users/login`,
         form
       );
-      alert("login successfully");
+      toast.success("Login successful!");
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/home");
     } catch (error) {
-      alert("something went wrong");
+      toast.error("Login failed: " + (error.response?.data?.message || "Please try again."));
     }
   };
   return (

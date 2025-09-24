@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, decreaseQuantity, addToCart, clearCart } from '../../store/cartSlice';
 import { useNavigate } from "react-router-dom";
 import './cart.css';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -18,7 +19,9 @@ const Cart = () => {
       <div className="myCart">
         <h2>My Cart</h2>
         {cartItems.length > 0 && (
-          <i  onClick={() => dispatch(clearCart())} className="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i>
+          <i  onClick={() => {dispatch(clearCart())
+            toast.success("Cart cleared successfully!")}
+          } className="fa-solid fa-trash-can" style={{cursor:"pointer"}}></i>
         )}
       </div>
       

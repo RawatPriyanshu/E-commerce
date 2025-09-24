@@ -5,6 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SearchBar from "../SearchBar";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const [userDetails, setUserDetails] = useState(false);
@@ -27,6 +28,7 @@ const Home = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    toast.success("Logged out successfully");
     navigate("/");
   }
   return (
@@ -44,7 +46,7 @@ const Home = () => {
             <div className="profile" onClick={() => setUserDetails(!userDetails)}>
               <i className="fa fa-user icon"></i>
               <div className={userDetails ? "profile-menu" : "profile-menu-hide"}>
-                <div><span><i class="fa-regular fa-user"></i> Edit Profile</span></div>
+                <div onClick={()=>navigate('/editProfile')}><span><i class="fa-regular fa-user"></i> Edit Profile</span></div>
                 <div onClick={handleLogout}><span><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</span></div>
               </div>
             </div>

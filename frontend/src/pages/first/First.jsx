@@ -4,6 +4,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 
 const First = () => {
   const [show, setShow] = useState(false);
@@ -34,10 +36,10 @@ const First = () => {
     e.preventDefault();
     try {
       await axios.post(`${API}/api/users/register`, registerForm);
-      alert("Registration successful, please login!");
-      setIsActive(false); // Switch to login panel
+      toast.success("Registration successful! Please login.");
+      setIsActive(false);
     } catch (error) {
-      alert(error.response?.data?.message || "Registration failed");
+      toast.error("Registration failed: " + (error.response?.data?.message || "Please try again."));
     }
   };
 
@@ -46,14 +48,12 @@ const First = () => {
     try {
       const res = await axios.post(`${API}/api/users/login`, loginForm);
 
-      // Save token + user in localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      alert("Login successful!");
+      toast.success("Login successful!");
       navigate("/home");
     } catch (error) {
-      alert(error.response?.data?.message || "Login failed");
+      toast.error("Login failed: " + (error.response?.data?.message || "Please try again."));
     }
   };
 

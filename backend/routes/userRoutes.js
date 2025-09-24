@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const multer = require('multer');
+const path = require('path');
+
 
 // Register Route
 router.post("/register", async (req, res) => {
@@ -66,4 +69,62 @@ router.post('/login', async (req, res) => {
     });
   }
 });
+
+
+// edit and update user profile
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/'); // folder to save images
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // unique filename
+  }
+});
+
+// 2️⃣ Filter file types
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image/')) {
+    cb(null, true);
+  } else {
+    cb(new Error('Only image files are allowed'), false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
+
+router.post('/upload-profile-pic/:userId', upload.single('image'), async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    user.profilePic = req.file.filename;
+    await user.save();
+
+    res.status(200).json({ message: 'Image uploaded successfully', user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Route to update username and optionally upload image
+router.put('/update-profile/:userId', upload.single('image'), async (req, res) => {
+  try {
+    const { username } = req.body;
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    // Update username if provided
+    if (username) user.username = username;
+
+    // Update profile picture if provided
+    if (req.file) user.profilePicture = req.file.filename;
+
+    await user.save();
+
+    res.status(200).json({ message: 'Profile updated successfully', user });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;
