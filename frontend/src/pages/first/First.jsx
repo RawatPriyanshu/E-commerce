@@ -34,6 +34,11 @@ const First = () => {
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
+    if (!registerForm.email.endsWith("@gmail.com")) {
+    alert("Only Gmail accounts are allowed!");
+    return;
+  }
+
     try {
       await axios.post(`${API}/api/users/register`, registerForm);
       toast.success("Registration successful! Please login.");
