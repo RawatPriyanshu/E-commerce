@@ -67,15 +67,40 @@ input::placeholder {
 }
 .profile-menu {
   position: absolute;
-  width: 150px;
   background-color: #fff;
-  right: -65px;
-  top: 30px;
-  z-index: 1001;
-  border: 2px solid orange;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  right: -20px;
+}
+.user-info {
   display: flex;
   flex-direction: column;
-  align-items: self-start;
+  align-items: center;
+}
+.user-info p {
+  color: rgb(124, 124, 124);
+}
+.edit-profile {
+  margin-top: 10px;
+  border-top: 1px solid #c5bfbf;
+  display: flex;
+  justify-content: flex-start;
+}
+.edit-profile span {
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.log-out {
+  display: flex;
+  justify-content: flex-start;
+}
+.log-out span {
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: red;
 }
 .profile-menu i {
   margin-right: 5px;
@@ -357,12 +382,12 @@ h1 {
   .links-container {
     width: 500px;
   }
-  .search input{
+  .search input {
     width: 400px;
   }
 }
 
-@media (min-width:1024px) {
+@media (min-width: 1024px) {
   .search {
     display: flex;
     align-items: center;
@@ -381,12 +406,15 @@ h1 {
     margin-right: 30px;
     gap: 15px;
   }
-  .search input{
+  .search input {
     width: 500px;
   }
 
   /* checking */
-  .bestOfMen , .bestOfWomen, .bestOfKids, .bestOfHome {
+  .bestOfMen,
+  .bestOfWomen,
+  .bestOfKids,
+  .bestOfHome {
     padding: 20px 0;
     background: #fff;
     border-radius: 10px;
@@ -395,7 +423,10 @@ h1 {
     margin: 30px 10px;
   }
 
-  .bestOfMen .collection-heading , .bestOfWomen .collection-heading, .bestOfKids .collection-heading, .bestOfHome .collection-heading {
+  .bestOfMen .collection-heading,
+  .bestOfWomen .collection-heading,
+  .bestOfKids .collection-heading,
+  .bestOfHome .collection-heading {
     font-size: 1.6rem;
     font-weight: 700;
     margin: 0 0 15px 20px;
@@ -405,7 +436,9 @@ h1 {
     padding-left: 10px;
   }
 
-  .bestOfMenList, .bestOfWomenList, .bestOfKidsList {
+  .bestOfMenList,
+  .bestOfWomenList,
+  .bestOfKidsList {
     display: flex;
     gap: 18px;
     overflow-x: auto;
@@ -414,7 +447,9 @@ h1 {
     scrollbar-width: none;
   }
 
-  .bestOfMenList::-webkit-scrollbar, .bestOfWomenList::-webkit-scrollbar, .bestOfKidsList::-webkit-scrollbar {
+  .bestOfMenList::-webkit-scrollbar,
+  .bestOfWomenList::-webkit-scrollbar,
+  .bestOfKidsList::-webkit-scrollbar {
     display: none;
   }
 
@@ -430,10 +465,13 @@ h1 {
 
   .product-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
   }
 
-  .bestOfMen .product-image, .bestOfWomen .product-image, .bestOfKids .product-image, .bestOfHome .product-image {
+  .bestOfMen .product-image,
+  .bestOfWomen .product-image,
+  .bestOfKids .product-image,
+  .bestOfHome .product-image {
     height: 160px;
     display: flex;
     justify-content: center;
@@ -442,18 +480,24 @@ h1 {
     border: none;
   }
 
-  .product-image img, .bestOfHome .product-image img , .bestOfWomen .product-image img , .bestOfKids .product-image img {
+  .product-image img,
+  .bestOfHome .product-image img,
+  .bestOfWomen .product-image img,
+  .bestOfKids .product-image img {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
     transition: transform 0.25s ease;
   }
 
-  .product-card:hover .product-image img, .bestOfHome .product-image img:hover , .bestOfWomen .product-image img:hover , .bestOfKids .product-image img:hover {
+  .product-card:hover .product-image img,
+  .bestOfHome .product-image img:hover,
+  .bestOfWomen .product-image img:hover,
+  .bestOfKids .product-image img:hover {
     transform: scale(1.05);
   }
 
-  .product-title{
+  .product-title {
     font-size: 0.95rem;
     font-weight: 600;
     color: #333;
@@ -465,7 +509,7 @@ h1 {
     font-weight: 700;
     color: #ff6a00;
   }
-  .bestOfHome .product-card{
+  .bestOfHome .product-card {
     height: 270px;
   }
 }

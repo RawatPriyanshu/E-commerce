@@ -7,11 +7,32 @@ import { useSelector } from "react-redux";
 import SearchBar from "../SearchBar";
 import { toast } from "react-toastify";
 
+const Api = "https://e-commerce-by-priyanshu.onrender.com/api/user-update";
+
 const Home = () => {
   const [userDetails, setUserDetails] = useState(false);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const cartItems = useSelector((state) => state.cart.cartItems);
+
+  const users = localStorage.getItem("user");
+  const userId = users ? JSON.parse(users).id : null;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (!userId) return;
+
+    axios
+      .get(`${Api}/get-user/${userId}`)
+      .then((res) => {
+        const userData = res.data.user || res.data;
+        setUser(userData);
+      })
+      .catch((err) => {
+        console.error("Error fetching user:", err);
+      });
+  }, [userId]);
+
   const API = "https://e-commerce-by-priyanshu.onrender.com";
   useEffect(() => {
     const fetchProducts = async () => {
@@ -30,7 +51,7 @@ const Home = () => {
     localStorage.removeItem("user");
     toast.success("Logged out successfully");
     navigate("/");
-  }
+  };
   return (
     <div style={{ backgroundColor: "#f1f2f4" }}>
       {/* small device size */}
@@ -43,11 +64,41 @@ const Home = () => {
             <SearchBar />
           </div>
           <div className="icons">
-            <div className="profile" onClick={() => setUserDetails(!userDetails)}>
+            <div
+              className="profile"
+              onClick={() => setUserDetails(!userDetails)}
+            >
               <i className="fa fa-user icon"></i>
-              <div className={userDetails ? "profile-menu" : "profile-menu-hide"}>
-                <div onClick={()=>navigate('/editProfile')}><span><i class="fa-regular fa-user"></i> Edit Profile</span></div>
-                <div onClick={handleLogout}><span><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</span></div>
+              <div
+                className={userDetails ? "profile-menu" : "profile-menu-hide"}
+              >
+                <div className="user-info">
+                  <img
+                    src={
+                      user?.profilePicture
+                        ? `https://e-commerce-by-priyanshu.onrender.com/uploads/${user.profilePicture}`
+                        : "https://via.placeholder.com/150"
+                    }
+                    alt="Profile"
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                  <h4>{user?.username}</h4>
+                  <p>{user?.email}</p>
+                </div>  
+                <div className="edit-profile" onClick={() => navigate("/editProfile")}>
+                  <span>
+                    <i class="fa-regular fa-user"></i> Edit Profile
+                  </span>
+                </div>
+                <div className="log-out" onClick={handleLogout}>
+                  <span>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+                  </span>
+                </div>
               </div>
             </div>
             <div className="cart">
