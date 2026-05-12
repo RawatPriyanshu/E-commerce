@@ -15,7 +15,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} style={{ display: "flex", gap: "5px" }}>
+    <form onSubmit={handleSearch} style={{ display: "flex", gap: "5px", width: "100%" }}>
       <input
         type="text"
         placeholder="Search products here..."
