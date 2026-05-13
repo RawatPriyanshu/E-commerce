@@ -15,20 +15,11 @@ export default function Edit() {
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(userId);
-  // 🔹 Fetch user on mount
   useEffect(() => {
-    console.log("useEffect ran, userId:", userId);
-
-    if (!userId) {
-      console.log("No userId found in localStorage");
-      return;
-    }
-
+    if (!userId) return;
     axios
       .get(`${API}/get-user/${userId}`)
       .then((res) => {
-        console.log("Fetched user 👉", res.data);
         const userData = res.data.user || res.data;
         setUser(userData);
         setUsername(userData.username);
@@ -40,21 +31,17 @@ export default function Edit() {
       });
   }, [userId]);
 
-  // 🔹 Handle image select
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setImage(file);
     setPreview(URL.createObjectURL(file));
   };
 
-  // 🔹 Submit update
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("username", username);
     if (image) formData.append("image", image);
-
     try {
       const res = await axios.put(`${API}/update-profile/${userId}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -67,60 +54,73 @@ export default function Edit() {
     }
   };
 
+  const avatarSrc =
+    preview ||
+    (user?.profilePicture
+      ? `https://e-commerce-by-priyanshu.onrender.com/uploads/${user.profilePicture}`
+      : "https://via.placeholder.com/150");
+
   if (loading) return <p>Loading...</p>;
   if (!user) return <p>No user found</p>;
 
   return (
-    <div style={{ Width: "100%", margin: "auto", height:"100vh", backgroundColor:"#e8e6e6" }} className="editProfile-container">
+    <div className="editProfile-container">
+
+      {/* ── Navbar ── */}
       <div className="heading">
         <img className="edit-page-logo" src="./images/logo.png" alt="logo" />
-        <Link className="home-link" to={'/home'}>Home</Link>
-        <img className="user-icon" src={
-              preview ||
-              (user.profilePicture
-                ? `https://e-commerce-by-priyanshu.onrender.com/uploads/${user.profilePicture}`
-                : "https://via.placeholder.com/150")
-            } alt="pfp" />
+        <Link className="home-link" to="/home">
+          <i className="fa-solid fa-house"></i> Home
+        </Link>
+        <img className="user-icon" src={avatarSrc} alt="profile" />
       </div>
+
+      {/* ── Form ── */}
       <div className="editing-profile">
         <h2>Edit Profile</h2>
+
         <form onSubmit={handleSubmit}>
-        {/* Profile Picture */}
-        <div className="upload-profile">
-          <img
-            src={
-              preview ||
-              (user.profilePicture
-                ? `https://e-commerce-by-priyanshu.onrender.com/uploads/${user.profilePicture}`
-                : "https://via.placeholder.com/150")
-            }
-            alt="Profile"
-            style={{ width: "100px", height: "100px", borderRadius: "50%", marginTop:"15px" }}
-          />
-          <label className="camera" htmlFor="fileInput"><i class="fa fa-camera"></i></label>
-          <input id="fileInput" type="file" accept="image/*" onChange={handleImageChange} style={{display:"none"}}></input>
-        </div>
 
-        {/* Username */}
-        <div className="user-name">
-          <label>Name</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
+          {/* Avatar */}
+          <div className="upload-profile">
+            <img src={avatarSrc} alt="Profile" />
+            <label className="camera" htmlFor="fileInput">
+              <i className="fa fa-camera"></i>
+            </label>
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              style={{ display: "none" }}
+            />
+          </div>
 
-        {/* Email (read-only) */}
-        <div className="user-email">
-          <label>Email:</label>
-          <input type="text" value={user.email} disabled />
-        </div>
-        <div className="save-changes"><button type="submit">Save Changes</button></div>
-        
-      </form>
+          {/* Name */}
+          <div className="user-name">
+            <label htmlFor="nameInput">Name</label>
+            <input
+              id="nameInput"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Your name"
+            />
+          </div>
+
+          {/* Email (read-only) */}
+          <div className="user-email">
+            <label>Email</label>
+            <input type="text" value={user.email} disabled />
+          </div>
+
+          {/* Save */}
+          <div className="save-changes">
+            <button type="submit">Save Changes</button>
+          </div>
+
+        </form>
       </div>
-      
     </div>
   );
 }
