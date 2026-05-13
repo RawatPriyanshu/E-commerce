@@ -7,7 +7,7 @@ It allows users to browse products, search, filter by category, view detailed pr
 
 ## 🚀 Live Demo
 
-**[View Live Website](https://e-commerce-rho-six-90.vercel.app/)**
+**[View Live Website](https://e-commerce-7mhg.vercel.app/)**
 
 ---
 
