@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // CORS setup
-const allowedOrigins = ["http://localhost:3000", "https://e-commerce-rho-six-90.vercel.app"];
+const allowedOrigins = ["http://localhost:3000", "https://e-commerce-7mhg.vercel.app/"];
 
 const corsOptions = {
   origin: function(origin, callback) {
